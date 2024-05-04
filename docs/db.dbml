@@ -1,0 +1,82 @@
+Table user {
+    id int [pk, increment]
+    username varchar 
+    password varchar
+    name varchar
+    refresh_token varchar
+    created_at datetime
+    updated_at datetime
+}
+
+Table work {
+    work_id int [pk, increment]
+    work_name varchar
+    work_logo varchar
+    work_desc varchar
+    work_from date
+    work_to date
+    work_until_now tinyint
+}
+
+Table expertise {
+    exp_id int [pk, increment]
+    exp_logo varchar
+    exp_name varchar
+}
+
+Table services {
+    service_id int [pk, increment]
+    service_name varchar
+    service_logo varchar
+}
+
+Table projects {
+    project_id int [pk, increment]
+    project_featured_image varchar
+    project_title varchar
+    project_client varchar 
+    service_id int 
+    project_description text
+    project_situation text 
+    project_task text 
+    project_action text 
+    project_result text 
+    project_conclusion text 
+    project_start date
+    project_end date 
+    project_link varchar
+}
+
+Table clients {
+    client_id int [pk, increment]
+    client_name varchar 
+    client_logo varchar
+}
+
+Table testimonials {
+    testimonial_id int [pk, increment]
+    testimonial_name varchar 
+    testimonial_photo varchar 
+    testimonial_review text 
+    testimonial_occuption varchar 
+    testimonial_company varchar 
+}
+
+Table ceritificates {
+    cert_id int [pk, increment]
+    cert_title varchar 
+    cert_year varchar 
+    cert_link varchar
+}
+
+Table faq {
+    faq_id int [pk, increment]
+    faq_question varchar 
+    faq_answer text 
+}
+
+Table post {
+    post_id int [pk, increment]
+}
+
+Ref: projects.service_id > services.service_id 
