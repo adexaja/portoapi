@@ -74,9 +74,87 @@ Table faq {
     faq_question varchar 
     faq_answer text 
 }
-
-Table post {
-    post_id int [pk, increment]
+Enum post_post_status_enum {
+  "draft"
+  "submit"
+  "publish"
+  "schedule"
 }
 
+Table post {
+  "post_id" bigint(20) [pk, not null]
+  "post_title" text [default: NULL]
+  "post_slug" text [default: NULL]
+  "post_content" longtext [default: NULL]
+  "post_date" datetime [default: NULL]
+  "meta_title" text [default: NULL]
+  "meta_description" text [default: NULL]
+  "meta_keyword" text [default: NULL]
+  "post_status" post_post_status_enum [default: NULL]
+  "post_type" varchar(10) [default: NULL]
+  "post_view" bigint(20) [default: NULL]
+  "user_id" int(11) [default: NULL]
+  "post_video_url" text [default: NULL]
+  "post_excerpt" varchar(300) [default: NULL]
+  "first_image" text [default: NULL]
+  "thumbnail" text [default: NULL]
+  "medium_thumbnail" text [default: NULL]
+  "post_trending_topic" tinyint(1) [default: NULL]
+  "post_hottopic" tinyint(1) [default: NULL]
+  "post_slider" tinyint(1) [default: NULL]
+  "post_malayhomeland" tinyint(1) [default: NULL]
+  "post_advetorial" tinyint(1) [default: NULL]
+  "created_at" datetime [default: `current_timestamp()`]
+  "updated_at" datetime [default: NULL]
+}
+
+Table "category" {
+  "category_id" int(11) [pk, not null]
+  "category_name" varchar(200) [default: NULL]
+  "category_slug" varchar(200) [default: NULL]
+  "category_thumbnail" text [default: NULL]
+  "parent_id" int(11) [default: NULL]
+  "category_active" tinyint(1) [default: NULL]
+  "category_show" tinyint(1) [default: NULL]
+}
+
+Table "contact" {
+  "contact_id" int(11) [pk, not null]
+  "contact_title" varchar(200) [default: NULL]
+  "contact_name" varchar(200) [default: NULL]
+  "contact_icon" varchar(200) [default: NULL]
+}
+
+
+Table "tag" {
+  "tag_id" int(11) [pk, not null]
+  "tag_name" varchar(200) [default: NULL]
+  "tag_slug" varchar(200) [default: NULL]
+  "tag_popular" tinyint(1) [default: 0]
+  "tag_count" int(11) [default: 0]
+}
+
+
+Table "post_categories" {
+  "cat_id" bigint(20) [pk, not null]
+  "category_id" int(11) [default: NULL]
+  "post_id" bigint(20) [default: NULL]
+}
+
+Table "post_tags" {
+  "t_id" bigint(20) [pk, not null]
+  "tag_id" int(11) [default: NULL]
+  "post_id" bigint(20) [default: NULL]
+}
+
+Table "setting" {
+  "setting_id" int(11) [pk, not null]
+  "key" varchar(100) [default: NULL]
+  "value" text [default: NULL]
+}
+ 
 Ref: projects.service_id > services.service_id 
+Ref "fk_post_categories_category1":"category"."category_id" < "post_categories"."category_id" [update: no action, delete: no action]
+Ref "fk_post_categories_post1":"post"."post_id" < "post_categories"."post_id" [update: no action, delete: no action]
+Ref "fk_post_tags_post1":"post"."post_id" < "post_tags"."post_id" [update: no action, delete: no action]
+Ref "fk_post_tags_tag1":"tag"."tag_id" < "post_tags"."tag_id" [update: no action, delete: no action]
