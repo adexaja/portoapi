@@ -1,18 +1,18 @@
 CREATE TABLE `user` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `username` varchar(255),
-  `password` varchar(255),
-  `name` varchar(255),
-  `refresh_token` varchar(255),
+  `username` varchar(50),
+  `password` varchar(100),
+  `name` varchar(100),
+  `refresh_token` varchar(100),
   `created_at` datetime,
   `updated_at` datetime
 );
 
 CREATE TABLE `work` (
   `work_id` int PRIMARY KEY AUTO_INCREMENT,
-  `work_name` varchar(255),
-  `work_logo` varchar(255),
-  `work_desc` varchar(255),
+  `work_name` varchar(100),
+  `work_logo` varchar(200),
+  `work_desc` text,
   `work_from` date,
   `work_to` date,
   `work_until_now` tinyint
@@ -20,21 +20,21 @@ CREATE TABLE `work` (
 
 CREATE TABLE `expertise` (
   `exp_id` int PRIMARY KEY AUTO_INCREMENT,
-  `exp_logo` varchar(255),
-  `exp_name` varchar(255)
+  `exp_logo` varchar(200),
+  `exp_name` varchar(100)
 );
 
 CREATE TABLE `services` (
   `service_id` int PRIMARY KEY AUTO_INCREMENT,
-  `service_name` varchar(255),
-  `service_logo` varchar(255)
+  `service_name` varchar(100),
+  `service_logo` varchar(200)
 );
 
 CREATE TABLE `projects` (
   `project_id` int PRIMARY KEY AUTO_INCREMENT,
-  `project_featured_image` varchar(255),
-  `project_title` varchar(255),
-  `project_client` varchar(255),
+  `project_featured_image` varchar(200),
+  `project_title` text,
+  `project_client` varchar(100),
   `service_id` int,
   `project_description` text,
   `project_situation` text,
@@ -44,34 +44,34 @@ CREATE TABLE `projects` (
   `project_conclusion` text,
   `project_start` date,
   `project_end` date,
-  `project_link` varchar(255)
+  `project_link` varchar(200)
 );
 
 CREATE TABLE `clients` (
   `client_id` int PRIMARY KEY AUTO_INCREMENT,
-  `client_name` varchar(255),
-  `client_logo` varchar(255)
+  `client_name` varchar(100),
+  `client_logo` varchar(200)
 );
 
 CREATE TABLE `testimonials` (
   `testimonial_id` int PRIMARY KEY AUTO_INCREMENT,
-  `testimonial_name` varchar(255),
-  `testimonial_photo` varchar(255),
+  `testimonial_name` varchar(100),
+  `testimonial_photo` varchar(200),
   `testimonial_review` text,
-  `testimonial_occuption` varchar(255),
-  `testimonial_company` varchar(255)
+  `testimonial_occuption` varchar(100),
+  `testimonial_company` varchar(100)
 );
 
 CREATE TABLE `ceritificates` (
   `cert_id` int PRIMARY KEY AUTO_INCREMENT,
-  `cert_title` varchar(255),
-  `cert_year` varchar(255),
-  `cert_link` varchar(255)
+  `cert_title` text,
+  `cert_year` int(4),
+  `cert_link` varchar(200)
 );
 
 CREATE TABLE `faq` (
   `faq_id` int PRIMARY KEY AUTO_INCREMENT,
-  `faq_question` varchar(255),
+  `faq_question` text,
   `faq_answer` text
 );
 
