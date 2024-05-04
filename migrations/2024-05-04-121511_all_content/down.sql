@@ -1,0 +1,17 @@
+-- Your SQL goes here
+DROP TABLE IF EXISTS `category`;
+DROP TABLE IF EXISTS `ceritificates`;
+DROP TABLE IF EXISTS `clients`;
+DROP TABLE IF EXISTS `contact`;
+DROP TABLE IF EXISTS `expertise`;
+DROP TABLE IF EXISTS `faq`;
+DROP TABLE IF EXISTS `post`;
+DROP TABLE IF EXISTS `post_categories`;
+DROP TABLE IF EXISTS `post_tags`;
+DROP TABLE IF EXISTS `projects`;
+DROP TABLE IF EXISTS `services`;
+DROP TABLE IF EXISTS `setting`;
+DROP TABLE IF EXISTS `tag`;
+DROP TABLE IF EXISTS `testimonials`;
+DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `work`;
